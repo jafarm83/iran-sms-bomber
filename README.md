@@ -18,7 +18,7 @@
 پروژه را کلون کنید 🔗
 
 ```bash
-  git clone https://github.com/M-logique/Iran-Bomber/
+  [git clone https://github.com/jafarm83/iran-sms-bomber.git
 ```
 
 به فولدر پروژه بروید 📂
