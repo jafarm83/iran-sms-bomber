@@ -1,5 +1,7 @@
 # import requests as req
 from os import path, system
+import sys
+import signal
 
 # نصب خودکار پکیج‌ها در صورت نبودن
 if path.exists("./requirements.txt"):
@@ -19,6 +21,14 @@ from colorama import Fore
 from Plugins.functions import Functions
 
 r, g = Fore.LIGHTGREEN_EX, Fore.LIGHTYELLOW_EX
+
+# هندل کردن Ctrl + C
+def handle_exit(signum, frame):
+    print(Fore.BLUE + "\n[!] برنامه با موفقیت متوقف شد. خداحافظ :)")
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, handle_exit)  # Ctrl + C
+signal.signal(signal.SIGTERM, handle_exit) # kill یا shutdown
 
 if __name__ == "__main__":
     raw_logo = f"""
@@ -66,6 +76,5 @@ if __name__ == "__main__":
 
             Functions.start(choices[choice], number, int(count))
 
-        except KeyboardInterrupt:
-            print("\n" + Fore.BLUE, "Exiting...")
-            exit()
+        except Exception as e:
+            print(Fore.RED + "[!] خطا در اجرای برنامه:", e)
