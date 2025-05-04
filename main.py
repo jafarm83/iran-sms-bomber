@@ -9,6 +9,7 @@ import json
 from urllib.parse import urlencode
 import subprocess
 import re
+from multiprocessing import Value  # Added import for Value
 
 # Check and install required packages
 def install_dependencies():
@@ -273,7 +274,7 @@ def main():
     
     services = setup_services(phone)
     stop_event = threading.Event()
-    success_counter = threading.Value('i', 0)
+    success_counter = Value('i', 0)  # Changed from threading.Value to multiprocessing.Value
     
     try:
         with create_session() as session:
