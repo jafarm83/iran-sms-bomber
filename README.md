@@ -1,6 +1,4 @@
-Here's the complete README.md file in Persian for your SMS bomber project, incorporating all the elements you provided and matching the style of your program:
 
-```markdown
 # ایران بمبر 💣
 **یک اسمس بمبر رایگان برای ایرانیان**
 
