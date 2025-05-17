@@ -9,7 +9,9 @@ import json
 from urllib.parse import urlencode
 import subprocess
 import re
-from multiprocessing import Value  # Added import for Value
+from multiprocessing.sharedctypes import Value
+import ctypes
+
 
 # Check and install required packages
 def install_dependencies():
@@ -274,8 +276,8 @@ def main():
     
     services = setup_services(phone)
     stop_event = threading.Event()
-    success_counter = Value('i', 0)  # Changed from threading.Value to multiprocessing.Value
-    
+    success_counter = Value(ctypes.c_int, 0)    
+
     try:
         with create_session() as session:
             for _ in range(repeat_count):
